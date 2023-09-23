@@ -4,8 +4,8 @@ const mongoURI = 'mongodb://127.0.0.1:27017/inotebook'
 
 const connectToMongo = () => {
     mongoose
-    .connect(mongoURI)
-    .catch((err) => console.log("Mongo Error", err))
+        .connect(mongoURI)
+        .catch((err) => console.log("Mongo Error", err))
 }
 
 module.exports = connectToMongo;
