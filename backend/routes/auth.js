@@ -5,7 +5,6 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser')
-const giveheaders = require('../middleware/giveheaders')
 
 
 const JWT_SECRET = 'vishalisagoodb$oy';
@@ -49,7 +48,7 @@ router.post('/createuser', [
 })
 
 //ROUTE 2: Authenticate a user using: POST "/api/auth/login"
-router.post('/login', giveheaders, [
+router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').notEmpty()
 ], async (req, res) => {
