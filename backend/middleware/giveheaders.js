@@ -1,4 +1,4 @@
-const giveheaders = (req, res, next) => {
+app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'https://i-note-book-frontend.vercel.app');
 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -8,4 +8,4 @@ const giveheaders = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
 
     next();
-}
+})
