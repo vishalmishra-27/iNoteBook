@@ -75,12 +75,7 @@ router.post('/login', [
             }
             const authToken = jwt.sign(data, JWT_SECRET);
             success = true;
-            const headers = {
-                "Access-Control-Allow-Headers" : "Content-Type",
-                "Access-Control-Allow-Origin": "https://i-note-book-frontend.vercel.app",
-                "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-            }
-            return res.json({ headers, useremail, success, authToken });
+            return res.json({ useremail, success, authToken });
 
         } catch (error) {
             console.error(error.message);
@@ -90,6 +85,13 @@ router.post('/login', [
 
     res.send({ errors: result.array() });
 
+})
+
+router.options('/login', async (req, res) => {
+    const headers = {'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'}
+    return res.json({headers});
 })
 
 //ROUTE 3: Get logged in user's details using :   POST "/api/auth/getuser" Login required
