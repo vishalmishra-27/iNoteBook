@@ -5,18 +5,9 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
-const cors = require('cors');
 
 
 const JWT_SECRET = 'vishalisagoodb$oy';
-
-app.use(cors(
-    {
-        origin: 'https://i-note-book-frontend.vercel.app',
-        methods: ["POST", "GET", "PUT", "DELETE"],
-        credentials: "true"
-    }
-));
 
 //ROUTE 1: Create a user using: POST "/api/auth/createuser" No login required
 router.post('/createuser', [
@@ -84,7 +75,12 @@ router.post('/login', [
             }
             const authToken = jwt.sign(data, JWT_SECRET);
             success = true;
-            return res.json({ useremail, success, authToken });
+            const headers = {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
+            }
+            return res.json({ headers, useremail, success, authToken });
 
         } catch (error) {
             console.error(error.message);
@@ -98,14 +94,14 @@ router.post('/login', [
 
 //ROUTE 3: Get logged in user's details using :   POST "/api/auth/getuser" Login required
 router.post('/getuser', fetchuser, async (req, res) => {
-try {
-    let userid = req.user.id;
-    const user = await User.findById(userid).select("-password");
-    res.send(user);
-} catch (error) {
-    console.error(error.message);
-    return res.status(500).send("Internal Server Error");
-}
+    try {
+        let userid = req.user.id;
+        const user = await User.findById(userid).select("-password");
+        res.send(user);
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send("Internal Server Error");
+    }
 })
 
 module.exports = router;
