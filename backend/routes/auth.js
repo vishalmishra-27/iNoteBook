@@ -76,9 +76,9 @@ router.post('/login', [
             const authToken = jwt.sign(data, JWT_SECRET);
             success = true;
             const headers = {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': '*'
+                "Access-Control-Allow-Headers" : "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
             }
             return res.json({ headers, useremail, success, authToken });
 
