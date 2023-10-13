@@ -4,10 +4,19 @@ const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-const fetchuser = require('../middleware/fetchuser')
+const fetchuser = require('../middleware/fetchuser');
+const cors = require('cors');
 
 
 const JWT_SECRET = 'vishalisagoodb$oy';
+
+app.use(cors(
+    {
+        origin: 'https://i-note-book-frontend.vercel.app',
+        methods: ["POST", "GET", "PUT", "DELETE"],
+        credentials: "true"
+    }
+));
 
 //ROUTE 1: Create a user using: POST "/api/auth/createuser" No login required
 router.post('/createuser', [
@@ -48,12 +57,7 @@ router.post('/createuser', [
 })
 
 //ROUTE 2: Authenticate a user using: POST "/api/auth/login"
-router.post('/login', function(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
-}, [
+router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').notEmpty()
 ], async (req, res) => {
