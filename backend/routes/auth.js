@@ -48,7 +48,12 @@ router.post('/createuser', [
 })
 
 //ROUTE 2: Authenticate a user using: POST "/api/auth/login"
-router.post('/login', [
+router.post('/login', function(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+}, [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').notEmpty()
 ], async (req, res) => {
