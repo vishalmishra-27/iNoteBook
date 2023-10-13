@@ -87,14 +87,6 @@ router.post('/login', [
 
 })
 
-router.options('/login', async (req, res) => {
-    const headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://i-note-book-frontend.vercel.app',
-        'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
-    }
-    return res.json({ headers });
-})
 
 //ROUTE 3: Get logged in user's details using :   POST "/api/auth/getuser" Login required
 router.post('/getuser', fetchuser, async (req, res) => {
