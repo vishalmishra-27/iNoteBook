@@ -6,7 +6,7 @@ connectToMongo();
 
 const app = express()
 app.use(cors());
-const port = 80
+const port = 80;
 
 app.use(express.json()); //To read req.body
 
