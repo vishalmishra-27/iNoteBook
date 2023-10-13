@@ -5,7 +5,12 @@ const cors = require('cors');
 connectToMongo();
 
 const app = express()
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://i-note-book-frontend.vercel.app"],
+        methods: ["POST", "GET"]
+    }
+));
 const port = 80;
 
 app.use(express.json()); //To read req.body
