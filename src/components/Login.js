@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const host = "http://localhost:80";
+    const host = "https://i-note-book-gold.vercel.app";
 
     const [credentials, setCredentials] = useState({email: "", password: ""})
 
