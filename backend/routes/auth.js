@@ -75,12 +75,7 @@ router.post('/login', [
             }
             const authToken = jwt.sign(data, JWT_SECRET);
             success = true;
-            const headers = {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://i-note-book-frontend.vercel.app',
-                'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
-            }
-            return res.json({ headers, useremail, success, authToken });
+            return res.json({ useremail, success, authToken });
 
         } catch (error) {
             console.error(error.message);
