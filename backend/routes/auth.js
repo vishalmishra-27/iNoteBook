@@ -78,7 +78,7 @@ router.post('/login', [
             const headers = {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
+                'Access-Control-Allow-Methods': '*'
             }
             return res.json({ headers, useremail, success, authToken });
 
