@@ -49,10 +49,10 @@ router.post('/createuser', [
 })
 
 //ROUTE 2: Authenticate a user using: POST "/api/auth/login"
-router.post('/login', giveheaders, [
+router.post('/login', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password cannot be blank').notEmpty()
-], async (req, res) => {
+], async (req, giveheaders, res) => {
     let success = false;
     const result = validationResult(req); //Checking if it is a bad POST request
     if (result.isEmpty()) {
