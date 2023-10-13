@@ -77,7 +77,7 @@ router.post('/login', [
             success = true;
             const headers = {
                 "Access-Control-Allow-Headers" : "Content-Type",
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://i-note-book-frontend.vercel.app",
                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
             }
             return res.json({ headers, useremail, success, authToken });
