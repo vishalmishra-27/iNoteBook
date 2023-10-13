@@ -74,6 +74,7 @@ router.post('/login', [
             }
             const authToken = jwt.sign(data, JWT_SECRET);
             success = true;
+            res.header("Access-Control-Allow-Origin", "*");
             return res.json({ useremail, success, authToken });
 
         } catch (error) {
