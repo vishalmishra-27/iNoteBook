@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
-  const host = "http://localhost:80/";
+  const host = "http://localhost:80";
 
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
 
