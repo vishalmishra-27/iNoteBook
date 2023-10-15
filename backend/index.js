@@ -5,17 +5,11 @@ const cors = require('cors');
 connectToMongo();
 
 const app = express()
-app.use(cors({
-    origin: "https://i-note-book-frontend.vercel.app",
-}));
+app.use(cors());
 
 const port = 80;
 
 app.use(express.json()); //To read req.body
-
-app.get('/', async (req,res) => {
-    res.end("Heloo");
-})
 
 // Available Routes
 app.use('/api/auth', require('./routes/auth'))

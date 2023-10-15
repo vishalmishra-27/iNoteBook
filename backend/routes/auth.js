@@ -5,13 +5,9 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
-const cors = require('cors');
+
 
 const JWT_SECRET = 'vishalisagoodb$oy';
-
-app.use(cors({
-    origin: "https://i-note-book-frontend.vercel.app",
-}));
 
 //ROUTE 1: Create a user using: POST "/api/auth/createuser" No login required
 router.post('/createuser', [
