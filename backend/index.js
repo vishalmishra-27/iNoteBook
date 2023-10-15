@@ -6,7 +6,7 @@ connectToMongo();
 
 const app = express()
 app.use(cors({
-    origin: "*"
+    origin: "https://i-note-book-gold.vercel.app/api/auth/login"
 }));
 
 const port = 80;
