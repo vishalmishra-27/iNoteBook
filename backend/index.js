@@ -14,7 +14,7 @@ const port = 80;
 app.use(express.json()); //To read req.body
 
 app.get('/', async (req,res) => {
-    res.send("Heloo");
+    res.end("Heloo");
 })
 
 // Available Routes
