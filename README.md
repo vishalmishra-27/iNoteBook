@@ -1,0 +1,1 @@
+Developed a MERN stack web app enabling users to save and access notes. Implemented JWT for user authentication and bcrypt for encrypted password storage in MongoDB, ensuring data privacy and a seamless, personalized experience.
