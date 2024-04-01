@@ -12,7 +12,7 @@ const JWT_SECRET = 'vishalisagoodb$oy';
 //ROUTE 1: Create a user using: POST "/api/auth/createuser" No login required
 router.post('/createuser', [
     body('name').isLength({ min: 3 }),
-    body('password').isLength({ min: 5 }),
+    body('password').isLength({ min: 2 }),
     body('email').isEmail()
 ], async (req, res) => {
     let success = false;
